@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         task1();
         task2();
         task3();
@@ -14,7 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите номер года");
         int numberOfYear = scanner.nextInt();
-        isLeapYear(numberOfYear);
+        //scanner.close();
         return numberOfYear;
     }
 
@@ -31,6 +30,7 @@ public class Main {
         System.out.println("Какая у вас операционая система?");
         System.out.println("0 - Android, 1 - Ios");
         int ver = scanner.nextInt();
+        //scanner.close();
         return ver;
     }
 
@@ -50,6 +50,7 @@ public class Main {
                 } else {
                     System.out.println("Установите версию приложения для Android по ссылке");
                 }
+                break;
             default:
                 System.out.println("Приложение для вашей операционной системы находится в разработке");
         }
@@ -59,17 +60,20 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите растояние до офиса");
         int distans = scanner.nextInt();
+        scanner.close();
         return distans;
     }
 
     public static void  deliveryTime(int deliveryDistance) {
-        int deliveryTime;
-        if (deliveryDistance>100) {
-            System.out.println("Доставка по вашему адресу производится по отдельной договоренности");
-        } else {
-            deliveryTime = (deliveryDistance/40 + 1);
-            System.out.println("Потребуется дней: " + deliveryTime);
-        }
+        int deliveryTime = 0;
+        if (deliveryDistance <= 20) {
+            deliveryTime = 1;
+        } else if (deliveryDistance <= 60) {
+            deliveryTime = 2;
+        } else if (deliveryDistance <= 100) {
+            deliveryTime = 3;
+        } else System.out.println("Доставка по вашему адресу производится по отдельной договоренности");
+        System.out.println("Потребуется дней: " + deliveryTime);
     }
 
     public static void task1() {
